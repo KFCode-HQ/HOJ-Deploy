@@ -2,7 +2,7 @@ version: "3"
 services:
 
   hoj-redis:
-    image: redis:5.0.9-alpine
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/redis:5.0.12-alpine
     container_name: hoj-redis
     restart: always
     volumes:
@@ -36,7 +36,7 @@ services:
         ipv4_address: ${MYSQL_HOST:-172.20.0.3}
       
   hoj-nacos:
-    image: nacos/nacos-server:1.4.2
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/nacos/nacos-server:v1.4.7
     container_name: hoj-nacos
     restart: always
     depends_on: 
@@ -218,7 +218,7 @@ services:
   hoj-autohealth:  # 监控不健康的容器进行重启
     restart: always
     container_name: hoj-autohealth
-    image: willfarrell/autoheal
+    image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/willfarrell/autoheal:latest
     environment:
       - AUTOHEAL_CONTAINER_LABEL=all
     volumes:
